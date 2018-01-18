@@ -745,9 +745,9 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ckn-fQ-8wH">
-                                        <rect key="frame" x="110" y="521" width="404" height="19"/>
+                                        <rect key="frame" x="110" y="521" width="504" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="gN9-uP-pUh"/>
+                                            <constraint firstAttribute="width" constant="500" id="gN9-uP-pUh"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" title=" 空" id="rJI-CQ-ZJf">
                                             <font key="font" metaFont="system" size="15"/>
@@ -764,9 +764,9 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bvV-Fs-fwh">
-                                        <rect key="frame" x="114" y="481" width="404" height="19"/>
+                                        <rect key="frame" x="114" y="481" width="504" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="pf5-Sx-8eR"/>
+                                            <constraint firstAttribute="width" constant="500" id="pf5-Sx-8eR"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="空" id="KuG-bf-gvh">
                                             <font key="font" metaFont="system" size="15"/>
@@ -867,7 +867,7 @@
                                         </buttonCell>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTq-e5-ypo">
-                                        <rect key="frame" x="18" y="76" width="504" height="30"/>
+                                        <rect key="frame" x="20" y="76" width="500" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" title="es,ko,vi" placeholderString="如果不填写，默认全部" bezelStyle="round" id="tx1-Cu-uOA">
                                             <font key="font" metaFont="system"/>
