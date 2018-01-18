@@ -22,10 +22,11 @@
 @property (weak) IBOutlet NSProgressIndicator *indicator;
 @property (weak) IBOutlet NSButton *startBtn;
 
-@property (weak) IBOutlet NSTextField *excludeLists;
+@property (weak) IBOutlet NSTextField *projectLanguages;
+@property (weak) IBOutlet NSTextField *needTransLanguages;
 
+@property(nonatomic, strong) NSArray *needTransLanguagesArr;
 @property(nonatomic, copy ) NSString *temprojectPath;
-@property(nonatomic, copy ) NSString *tempexcludeLists;
 
 @property (nonatomic, strong) NSMutableArray *allFilePath;
 @property (nonatomic, strong) NSMutableArray *mfiles;
@@ -52,6 +53,9 @@
     self.mfiles = [NSMutableArray new];
     self.transWords = [NSMutableSet new];
     self.compareArr = [NSMutableArray new];
+    if (self.needTransLanguages.stringValue.length >0) {
+        self.needTransLanguagesArr = [[self.needTransLanguages.stringValue stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","];
+    }
     
 }
 
@@ -68,7 +72,6 @@
     [self.transWords removeAllObjects];
     [self.compareArr removeAllObjects];
     self.temprojectPath = self.projectPath.stringValue;
-    self.tempexcludeLists = self.excludeLists.stringValue;
     
     self.outPath.stringValue = @"";
     self.mfileCount.stringValue = @"";
@@ -200,17 +203,29 @@
 {
     
     
-    NSArray *exLists = [[self.tempexcludeLists stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","];
-    NSMutableArray *compare = [self.compareArr mutableCopy];
+    NSString *projectLanguages = nil;
+    NSMutableArray *compare = [NSMutableArray new];
     for (CountryModel *model in self.compareArr) {
-        if ([exLists containsObject:model.name]) {
-            [compare removeObject:model];
+        
+        if(projectLanguages.length > 0) {
+            projectLanguages = [NSString stringWithFormat:@"%@, %@", projectLanguages, model.name];
+        } else {
+            projectLanguages = model.name;
         }
+        if (self.needTransLanguagesArr.count > 0) {
+            if ([self.needTransLanguagesArr containsObject:model.name]) {
+                [compare addObject:model];
+            }
+        } else {
+             [compare addObject:model];
+        }
+
     }
     
     self.compareArr = compare;
      __weak __typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
+        weakSelf.projectLanguages.stringValue = projectLanguages;
         if(weakSelf.compareArr.count == 0) {
             weakSelf.startBtn.enabled = YES;
             return;
